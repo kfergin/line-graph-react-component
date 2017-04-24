@@ -1,0 +1,43 @@
+@import 'normalize';
+
+.line-graph {
+	svg {
+		display: block;
+		padding-top: 18px;
+		text {
+			font-family: 'Helvetica Neue', sans-serif;
+			font-size: 3px;
+			fill: #777;
+			transform: translateY(-1px);
+		}
+		line {
+			stroke: #ccc;
+			stroke-width: 0.3px;
+		}
+		.xLabel {
+			transform: translateX(-2px);
+		}
+	}
+	.legend {
+		position: relative;
+		ul {
+			width: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			&:last-child {
+				position: relative;
+			}
+			padding: 0;
+			margin: 0;
+			font-size: 16px;
+			font-weight: bold;
+			list-style-type: none;
+			text-align: center;
+		}
+		li {
+			display: inline-block;
+			margin: 0 7.2px 7.2px;
+		}
+	}
+}
