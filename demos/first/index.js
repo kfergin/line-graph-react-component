@@ -28,7 +28,13 @@ class App extends React.Component {
 		return (
 			<div className="graph-container">
 				<h1>Line Graph Demo</h1>
-				<p>Adjust the number of lines, number of points for each line, and X and Y axis labels. Points are positioned at random.</p>
+				<p>Adjust the number of lines, number of points for each line, and X and Y axis labels. Points are positioned at random. You can refresh the graph via the button below or by pressing the r key.</p>
+				<GraphController
+					updateGraph={this.update}
+					lines={this.state.lines}
+					xLabels={this.state.xLabels}
+					yLabels={this.state.yLabels}
+				/>
 				<LineGraph
 					lines={this.state.lines}
 					width={1.8}
@@ -36,12 +42,6 @@ class App extends React.Component {
 					yLabels={this.state.yLabels}
 					colors={lineColors}
 					{...{xMin, xMax, yMin, yMax}}
-				/>
-				<GraphController
-					updateGraph={this.update}
-					lines={this.state.lines}
-					xLabels={this.state.xLabels}
-					yLabels={this.state.yLabels}
 				/>
 			</div>
 		);

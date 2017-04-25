@@ -31,7 +31,7 @@ class GraphController extends React.Component {
 	}
 	componentDidMount() {
 		document.querySelector('html').addEventListener('keydown', (e) => {
-			if (e.which === 13) {
+			if (e.which === 82) {
 				this.refreshGraph();
 			}
 		})
@@ -39,10 +39,6 @@ class GraphController extends React.Component {
 	render() {
 		return (
 			<div className="graph-controller">
-				<button
-					className="refresh"
-					onClick={this.refreshGraph}
-				>refresh graph!</button>
 				<div className="split-50">
 					<div>
 						<h3>Lines</h3>
@@ -123,6 +119,10 @@ class GraphController extends React.Component {
 						</div>
 					</div>
 				</div>
+				<button
+					className="refresh"
+					onClick={this.refreshGraph}
+				>refresh graph!</button>
 			</div>
 		);
 	}
