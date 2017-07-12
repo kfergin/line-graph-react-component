@@ -33,7 +33,8 @@ module.exports = {
 			{
 				test: /\.scss$/,
 				include: [
-					path.resolve(__dirname, 'src')
+					path.resolve(__dirname, 'src'),
+					path.resolve(__dirname, 'demos')
 				],
 				use: isProd ? cssProd : cssDev
 			}

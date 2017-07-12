@@ -1,6 +1,8 @@
 import React from 'react';
 import { TransitionMotion, spring } from 'react-motion';
 
+import './XLabels.scss';
+
 class XLabels extends React.Component {
 	constructor(props) {
 		super(props);

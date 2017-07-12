@@ -6,7 +6,7 @@ import YLabels from './components/YLabels';
 import XLabels from './components/XLabels';
 import Legend from './components/Legend';
 
-import styles from '../styles/main.scss';
+import './LineGraph.scss'
 
 class LineGraph extends React.Component {
 	constructor(props) {

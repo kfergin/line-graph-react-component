@@ -1,0 +1,18 @@
+@import '../styles/normalize';
+
+.line-graph {
+	svg {
+		display: block;
+		padding-top: 18px;
+		text {
+			font-family: 'Helvetica Neue', sans-serif;
+			font-size: 3px;
+			fill: #777;
+			transform: translateY(-1px);
+		}
+		line {
+			stroke: #ccc;
+			stroke-width: 0.3px;
+		}
+	}
+}

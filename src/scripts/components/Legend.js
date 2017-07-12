@@ -1,6 +1,8 @@
 import React from 'react';
 import { TransitionMotion, spring } from 'react-motion';
 
+import './Legend.scss';
+
 class Legend extends React.Component {
 	constructor(props) {
 		super(props);

@@ -5,8 +5,7 @@ import LineGraph from '../../src/scripts/LineGraph';
 import GraphController from './GraphController';
 import getDemoData from './getDemoData';
 
-import mainStyles from '../../src/styles/main.scss';
-import demoStyles from '../../src/styles/demo1.scss';
+import './index.scss';
 
 let xMin = 0;
 let xMax = 24;

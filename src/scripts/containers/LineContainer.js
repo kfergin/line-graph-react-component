@@ -16,12 +16,10 @@ class LineContainer extends React.Component {
 	}
 	componentWillReceiveProps(nextProps) {
 		if (this.props.points !== nextProps.points) {
-			this.setState((prevState) => {
-				return ({
-					points: this.formatData(nextProps),
-					enterPoint: prevState.points[prevState.points.length-1]
-				});
-			});
+			this.setState((prevState) => ({
+				points: this.formatData(nextProps),
+				enterPoint: prevState.points[prevState.points.length-1]
+			}));
 		}
 	}
 	render() {
