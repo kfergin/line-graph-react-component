@@ -7,17 +7,24 @@ var isProd = process.env.NODE_ENV === 'production';
 var cssDev = ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'];
 var cssProd = ExtractTextPlugin.extract({
 	fallback: 'style-loader',
-	use: ['css-loader', 'postcss-loader', 'sass-loader'],
-	publicPath: '/dist'
+	use: ['css-loader', 'postcss-loader', 'sass-loader']
 });
 
+const demoPaths = {
+	firstDemo: './demos/first'
+};
+const devPath = demoPaths.firstDemo;
+
 module.exports = {
+	context: __dirname,
 	entry: {
-		main: './demos/first/index.js'
+		firstDemo: `${demoPaths.firstDemo}/index.js`
 	},
 	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: '[name].js'
+		path: path.resolve(__dirname, `${demoPaths.firstDemo}/assets`),
+		filename: '[name].js',
+		publicPath: isProd ? './assets/' : '',
+		pathinfo: true
 	},
 	devtool: 'source-map',
 	module: {
@@ -41,7 +48,7 @@ module.exports = {
 		]
 	},
 	devServer: {
-		contentBase: path.join(__dirname, 'dist'),
+		contentBase: path.join(__dirname, devPath),
 		compress: true,
 		port: 9000,
 		hot: true,
@@ -50,12 +57,13 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-            title: 'Line Graph Demo 1',
+            title: 'Line Graph Demo',
             hash: true,
-            template: './demos/first/index.html'
+            filename: `${isProd ? '../' : ''}index.html`,
+            template: './src/index.html'
         }),
 		new ExtractTextPlugin({
-			filename: 'line-graph-rc.css',
+			filename: '[name].css',
 			disable: !isProd,
 			allChunks: true
 		}),

@@ -2,7 +2,7 @@ import React from 'react';
 
 import Line from '../components/Line';
 
-class LineContainer extends React.Component {
+export default class LineContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {points: this.formatData(props), enterPoint: null};
@@ -33,5 +33,3 @@ class LineContainer extends React.Component {
 		);
 	}
 }
-
-export default LineContainer;

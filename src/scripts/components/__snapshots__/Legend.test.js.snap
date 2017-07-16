@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Legend/> should render its empty snapshot 1`] = `
+<div
+  className="legend"
+>
+  <ul
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`<Legend/> should render its snapshot with legend keys 1`] = `
+<div
+  className="legend"
+>
+  <ul
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <li
+      style={
+        Object {
+          "color": "#00f",
+        }
+      }
+    >
+      first
+    </li>
+    <li
+      style={
+        Object {
+          "color": "#00f",
+        }
+      }
+    >
+      second
+    </li>
+    <li
+      style={
+        Object {
+          "color": "#00f",
+        }
+      }
+    >
+      third
+    </li>
+  </ul>
+</div>
+`;

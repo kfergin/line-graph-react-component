@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Line/> should render a polyline 1`] = `
+<polyline
+  fill="none"
+  points="0 2 0 1 0 5"
+  stroke="#00F"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+  transform="translate(10)"
+/>
+`;

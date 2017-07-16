@@ -3,6 +3,19 @@ import { TransitionMotion, spring } from 'react-motion';
 
 import './Legend.scss';
 
+const LegendComponent = ({styles, names, colors}) => (
+	<ul style={styles}>
+		{names.map((name, i) => (
+			<li
+				key={i}
+				style={{color: colors[i%colors.length]}}
+			>
+				{name}
+			</li>
+		))}
+	</ul>
+);
+
 class Legend extends React.Component {
 	constructor(props) {
 		super(props);
@@ -14,11 +27,13 @@ class Legend extends React.Component {
 		}
 	}
 	render() {
-		let {names, colors} = this.props;
+		const {names, colors} = this.props,
+			willEnter = () => ({opacity: 0}),
+			willLeave = () => ({opacity: spring(0)});
 		return (
 			<TransitionMotion
-				willEnter={() => ({opacity: 0})}
-				willLeave={() => ({opacity: spring(0)})}
+				willEnter={willEnter}
+				willLeave={willLeave}
 				styles={[{
 					key: 'time' + this.state.timestamp,
 					style: {opacity: spring(1)},
@@ -28,16 +43,10 @@ class Legend extends React.Component {
 				{instances => (
 					<div className="legend">
 						{instances.map(inst => (
-							<ul key={inst.key} style={inst.style}>
-								{inst.data.names.map((name, i) => (
-									<li
-										key={i}
-										style={{color: inst.data.colors[i%inst.data.colors.length]}}
-									>
-										{name}
-									</li>
-								))}
-							</ul>
+							<LegendComponent
+								key={inst.key}
+								{...{...inst.data, styles: inst.style}}
+							/>
 						))}
 					</div>
 				)}

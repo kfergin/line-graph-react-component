@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LineContainer/> renders a Line component 1`] = `
+<polyline
+  fill="none"
+  points="0 66.66666666666667 0 83.33333333333334 0 16.666666666666664"
+  stroke="#00f"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+  transform="translate(10)"
+/>
+`;

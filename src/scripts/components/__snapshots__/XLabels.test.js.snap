@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<XLabels/> should render its empty snapshot 1`] = `
+<g
+  className="x-labels"
+  transform="translate(10)"
+>
+  <g
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  />
+</g>
+`;
+
+exports[`<XLabels/> should render its snapshot with dots (instead of text) 1`] = `
+<g
+  className="x-labels"
+  transform="translate(10)"
+>
+  <g
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <circle
+      cx={0}
+      cy={98}
+      fill="#ccc"
+      r="0.75"
+    />
+    <circle
+      cx={66.66666666666667}
+      cy={98}
+      fill="#ccc"
+      r="0.75"
+    />
+    <circle
+      cx={133.33333333333334}
+      cy={98}
+      fill="#ccc"
+      r="0.75"
+    />
+    <circle
+      cx={200}
+      cy={98}
+      fill="#ccc"
+      r="0.75"
+    />
+  </g>
+</g>
+`;
+
+exports[`<XLabels/> should render its snapshot with string labels 1`] = `
+<g
+  className="x-labels"
+  transform="translate(10)"
+>
+  <g
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <text
+      className="xLabel"
+      x={0}
+      y={100}
+    >
+      first
+    </text>
+    <text
+      className="xLabel"
+      x={66.66666666666667}
+      y={100}
+    >
+      second
+    </text>
+    <text
+      className="xLabel"
+      x={133.33333333333334}
+      y={100}
+    >
+      third
+    </text>
+  </g>
+</g>
+`;

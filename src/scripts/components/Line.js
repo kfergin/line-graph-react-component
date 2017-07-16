@@ -12,10 +12,12 @@ const Line = ({ points, color, enterPoint, shiftX }) => {
 		stroke: color,
 		fill: 'none'
 	};
+	const willEnter = () => ({...enterPoint});
+	const willLeave = () => ({x: spring(leavePoint.x), y: spring(leavePoint.y)});
 	return (
 		<TransitionMotion
-			willEnter={() => ({...enterPoint})}
-			willLeave={() => ({x: spring(leavePoint.x), y: spring(leavePoint.y)})}
+			willEnter={willEnter}
+			willLeave={willLeave}
 			styles={points.map((d, i) => ({
 				key: ''+i,
 				style: {x: spring(d.x), y: spring(d.y)}

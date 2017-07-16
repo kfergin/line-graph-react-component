@@ -1,6 +1,25 @@
 import React from 'react';
 import { TransitionMotion, spring } from 'react-motion';
 
+const YLabelsComponent = ({styles, labels, yDiff, width, height}) => (
+	<g style={styles}>
+		{labels.map((label, i) => {
+			const yPosition = height - yDiff*i;
+			return (
+				<g key={i} className="yLabel">
+					<line
+						x1="0"
+						x2={width}
+						y1={yPosition}
+						y2={yPosition}
+					/>
+					{label ? <text x="0" y={yPosition}>{label}</text> : null}
+				</g>
+			)
+		})}
+	</g>
+);
+
 class YLabels extends React.Component {
 	constructor(props) {
 		super(props);
@@ -13,15 +32,17 @@ class YLabels extends React.Component {
 	}
 	render() {
 		let {labels, width, height} = this.props;
-		let amount = typeof labels === 'number' ? labels : labels.length;
-		let yDiff = height/(amount-1 > 0 ? amount-1 : 1);
+		let amount = labels.length || labels;
+		let yDiff = height/Math.max(amount-1, 1);
 		if (typeof labels === 'number') {
 			labels = Array.apply(null, {length: labels});
 		}
+		const willEnter = () => ({opacity: 0});
+		const willLeave = () => ({opacity: spring(0)});
 		return (
 			<TransitionMotion
-				willEnter={() => ({opacity: 0})}
-				willLeave={() => ({opacity: spring(0)})}
+				willEnter={willEnter}
+				willLeave={willLeave}
 				styles={[{
 					key: 'time' + this.state.timestamp,
 					style: {opacity: spring(1)},
@@ -31,19 +52,14 @@ class YLabels extends React.Component {
 				{instances => (
 					<g className="y-labels">
 						{instances.map(inst => (
-							<g key={inst.key} style={inst.style}>
-								{inst.data.labels.map((l, i) => (
-									<g key={i} className="yLabel">
-										<line
-											x1="0"
-											x2={width}
-											y1={height - inst.data.yDiff*i}
-											y2={height - inst.data.yDiff*i}
-										/>
-										{l ? <text x="0" y={height - inst.data.yDiff*i}>{l}</text> : null}
-									</g>
-								))}
-							</g>
+							<YLabelsComponent
+								key={inst.key}
+								{...{
+									styles: inst.style,
+									width, height,
+									...inst.data
+								}}
+							/>
 						))}
 					</g>
 				)}

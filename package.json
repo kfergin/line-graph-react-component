@@ -5,8 +5,9 @@
   "main": "src/scripts/LineGraph.js",
   "scripts": {
     "dev": "webpack-dev-server",
-    "prod": "npm run clean && NODE_ENV=production webpack -p",
-    "clean": "rimraf ./dist/*"
+    "prod": "NODE_ENV=production webpack -p",
+    "clean": "rimraf ./dist/*",
+    "test": "jest --verbose --coverage"
   },
   "repository": {
     "type": "git",
@@ -20,15 +21,19 @@
   "homepage": "https://github.com/kfergin/line-graph-react-component#readme",
   "devDependencies": {
     "babel-core": "^6.24.1",
+    "babel-jest": "^20.0.3",
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.0",
+    "enzyme": "^2.9.1",
     "extract-text-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^2.29.0",
+    "jest": "^20.0.4",
     "node-sass": "^4.5.2",
     "postcss-loader": "^1.3.3",
+    "react-test-renderer": "^15.6.1",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
@@ -40,5 +45,13 @@
     "react": "^15.5.4",
     "react-dom": "^15.6.1",
     "react-motion": "^0.4.8"
+  },
+  "jest": {
+    "moduleFileExtensions": ["js"],
+    "moduleDirectories": ["node_modules", "src"],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/fileMock.js",
+      "\\.(css|scss)$": "<rootDir>/src/__mocks__/styleMock.js"
+    }
   }
 }

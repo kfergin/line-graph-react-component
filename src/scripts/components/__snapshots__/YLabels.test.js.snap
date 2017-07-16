@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<YLabels/> should render its empty snapshot 1`] = `
+<g
+  className="y-labels"
+>
+  <g
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  />
+</g>
+`;
+
+exports[`<YLabels/> should render its snapshot with lines only (no text) 1`] = `
+<g
+  className="y-labels"
+>
+  <g
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <g
+      className="yLabel"
+    >
+      <line
+        x1="0"
+        x2={200}
+        y1={100}
+        y2={100}
+      />
+    </g>
+    <g
+      className="yLabel"
+    >
+      <line
+        x1="0"
+        x2={200}
+        y1={50}
+        y2={50}
+      />
+    </g>
+    <g
+      className="yLabel"
+    >
+      <line
+        x1="0"
+        x2={200}
+        y1={0}
+        y2={0}
+      />
+    </g>
+  </g>
+</g>
+`;
+
+exports[`<YLabels/> should render its snapshot with string labels 1`] = `
+<g
+  className="y-labels"
+>
+  <g
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <g
+      className="yLabel"
+    >
+      <line
+        x1="0"
+        x2={200}
+        y1={100}
+        y2={100}
+      />
+      <text
+        x="0"
+        y={100}
+      >
+        first
+      </text>
+    </g>
+    <g
+      className="yLabel"
+    >
+      <line
+        x1="0"
+        x2={200}
+        y1={50}
+        y2={50}
+      />
+      <text
+        x="0"
+        y={50}
+      >
+        second
+      </text>
+    </g>
+    <g
+      className="yLabel"
+    >
+      <line
+        x1="0"
+        x2={200}
+        y1={0}
+        y2={0}
+      />
+      <text
+        x="0"
+        y={0}
+      >
+        third
+      </text>
+    </g>
+  </g>
+</g>
+`;

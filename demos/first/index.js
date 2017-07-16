@@ -52,5 +52,5 @@ class App extends React.Component {
 
 render(
 	<App/>,
-	document.getElementById('graphEl')
+	document.getElementById('demoEl')
 );

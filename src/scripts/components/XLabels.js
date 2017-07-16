@@ -3,6 +3,26 @@ import { TransitionMotion, spring } from 'react-motion';
 
 import './XLabels.scss';
 
+const XLabelsComponent = ({styles, labels, xDiff, height}) => (
+	<g style={styles}>
+		{labels.map((label, i) => {
+			if (!label) {
+				return <circle key={i} cx={xDiff*i} cy={height-2} r="0.75" fill="#ccc"/>;
+			}
+			return (
+				<text
+					key={i}
+					className="xLabel"
+					x={xDiff*i}
+					y={height}
+				>
+					{label}
+				</text>
+			);
+		})}
+	</g>
+);
+
 class XLabels extends React.Component {
 	constructor(props) {
 		super(props);
@@ -15,16 +35,18 @@ class XLabels extends React.Component {
 	}
 	render() {
 		let {labels, width, height, shiftX} = this.props;
-		let amount = typeof labels === 'number' ? labels : labels.length;
-		let xDiff = width/(Math.abs(amount) || 1);
+		let amount = labels.length || labels;
+		let xDiff = width/Math.max(amount, 1);
 		if (typeof labels === 'number') {
 			labels = Array.apply(null, {length: labels});
-			xDiff = width/(Math.abs(amount-1) || 1);
+			xDiff = width/Math.max(amount-1, 1);
 		}
+		const willEnter = () => ({opacity: 0}),
+			willLeave = () => ({opacity: spring(0)});
 		return (
 			<TransitionMotion
-				willEnter={() => ({opacity: 0})}
-				willLeave={() => ({opacity: spring(0)})}
+				willEnter={willEnter}
+				willLeave={willLeave}
 				styles={[{
 					key: 'time' + this.state.timestamp,
 					style: {opacity: spring(1)},
@@ -34,23 +56,13 @@ class XLabels extends React.Component {
 				{instances => (
 					<g transform={`translate(${shiftX})`} className="x-labels">
 						{instances.map(inst => (
-							<g key={inst.key} style={inst.style}>
-								{inst.data.labels.map((l, i) => {
-									if (!l) {
-										return <circle key={i} cx={inst.data.xDiff*i} cy={height-2} r="0.75" fill="#ccc"/>;
-									}
-									return (
-										<text
-											key={i}
-											className="xLabel"
-											x={inst.data.xDiff*i}
-											y={height}
-										>
-											{l}
-										</text>
-									);
-								})}
-							</g>
+							<XLabelsComponent
+								key={inst.key}
+								{...{
+									styles: inst.style,
+									height, ...inst.data
+								}}
+							/>
 						))}
 					</g>
 				)}
