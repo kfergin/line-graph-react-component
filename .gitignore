@@ -1,4 +1,8 @@
-node_modules
-.DS_Store
+# dependencies
+/node_modules
 
-/dist/**/*.*
+# testing
+/coverage
+
+# misc
+.DS_Store
